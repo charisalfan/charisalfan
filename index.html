@@ -1,14 +1,433 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Charis Alfan's Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Charis Alfan Maulana - Portfolio</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        #header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        #header h1 {
+            margin: 0;
+            color: white;
+            font-size: 2.5rem;
+        }
+        #header p {
+            color: #ffcdd2;
+            max-width: 800px;
+            margin: 1rem auto 0;
+        }
+        footer {
+            background-color: #d32f2f;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-links li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .nav-links li a:hover {
+            color: #d32f2f;
+            background-color: #fce4e4;
+        }
+        .judul {
+            text-align: center;
+            margin: 3rem 0 2.5rem 0;
+            font-size: 2rem;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+        .container {
+            width: 95%;
+            max-width: 1100px;
+            margin: 0 auto 2rem auto;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+        .card.project-card {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .media-wrapper {
+            flex-shrink: 0;
+            width: 40%;
+        }
+        .card-content {
+            flex-grow: 1;
+        }
+        .media-container {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #eee;
+            aspect-ratio: 16 / 9;
+        }
+        .media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .big-carousel-wrapper {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        .big-carousel-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: #000;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; 
+            object-fit: cover;
+        }
+        .carousel-caption {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 500;
+            border-top: 2px solid #d32f2f;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        .carousel-btn:hover { background: #d32f2f; }
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+        .contact-content {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 180px;
+        }
+        .btn-email {
+            background-color: #d32f2f;
+            color: white;
+            box-shadow: 0 4px 6px rgba(211, 47, 47, 0.2);
+        }
+        .btn-email:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+        .btn-social {
+            background-color: #2c3e50;
+            color: white;
+        }
+        .btn-social:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+        }
+        .btn-insta {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+        .btn-insta:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .card.project-card {
+                flex-direction: column;
+            }
+            .media-wrapper {
+                width: 100% !important;
+            }
+            .youtube-grid {
+                grid-template-columns: 1fr;
+            }
+            .carousel-slide img {
+                aspect-ratio: 16 / 9;
+            }
+            .btn-link {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hi, Im Charis Alfan Maulana</h1>
-    <p>Welcome to my portfolio, below you can explore some of my recent projects and skill demonstration. I'm currently seeking opportunities in these field. Please feel free to contact me if you have any inquiries or questions.</p>
-    <h2>Selected Work</h2>
-        <h3>IT Tech Support</h3>
-            <h3>Storage Upgrade HP 245 G8</h3>
-                <p>User complains that 256GB storage isn't enough but doesn't want to change the original NVME drive since it's way over the budget. Unfortunately it doesn't come with SATA cable or bracket. As a workaround, I've installed a new 256GB SATA drive using bracket and cable from HP 14s since both are compatible. Storage capacity up by 100% but cost down to about 60% since SATA drive are about half the price of NVMe drive.
+    <div id="header">
+        <h1>Hi, I'm Charis Alfan Maulana</h1>
+        <p>Welcome to my portfolio, below you can explore some of my recent projects and skill demonstration. I'm currently seeking opportunities in these field.</p>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#itsup">IT Support</a></li>
+            <li><a href="#website">Web & Writing</a></li>
+            <li><a href="#grafis">Graphic Design</a></li>
+            <li><a href="#kontak">Contact</a></li>
+			<li><a href="resume.html">Resume</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- IT Support -->
+        <h2 class="judul" id="itsup">IT Tech Support</h2>
+        <div class="card project-card">
+            <div class="media-wrapper">
+                <div class="media-container">
+                    <div class="carousel-slides" id="storage-slides">
+                        <div class="carousel-slide"><img src="./src/storage1.jpg"></div>
+                        <div class="carousel-slide"><img src="./src/storage2.jpg"></div>
+						<div class="carousel-slide"><img src="./src/storage3.jpg"></div>
+                        <div class="carousel-slide"><img src="./src/storage4.jpg"></div>
+						<div class="carousel-slide"><img src="./src/storage5.jpg"></div>
+                    </div>
+                    <button class="carousel-btn prev-btn" onclick="moveManual('storage-slides', -1)">&#10094;</button>
+                    <button class="carousel-btn next-btn" onclick="moveManual('storage-slides', 1)">&#10095;</button>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>Storage Upgrade HP 245 G8</h2>
+                <p>User complains that 256GB storage isn't enough but doesn't want to change the original NVMe drive due to cost so 2nd best choice is using SATA drive which is cheaper than NVMe drive but faster than even super speed 7200rpm hard drive. Unfortunately it doesn't come with SATA cable or bracket. As a workaround, I've installed a new 256GB SATA drive using bracket and cable from HP 14s since both are compatible.</p>
+            </div>
+        </div>
+
+        <div class="card" id="youtube">
+            <h2>YouTube</h2>
+			<p>For additional projects, please visit my YouTube channel, <a href="https://www.youtube.com/@c0mand0r">Techtonime</a>. It serves as a hub for technical documentation, demonstrations to user, and an expanding knowledge base.</p>
+            <div class="youtube-grid">
+                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/EaxbVAFRaUU?si=wnvPQwcYAXCl9fHD" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/xbeChw9UhHo" allowfullscreen></iframe></div>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/FmpdN7DtidE" allowfullscreen></iframe></div>
+            </div>
+        </div>
+		
+		<div class="card project-card">
+            <div class="media-wrapper">
+                <div class="media-container">
+                    <div class="carousel-slides" id="memory-slides">
+                        <div class="carousel-slide"><img src="./src/memory1.jpg"></div>
+                        <div class="carousel-slide"><img src="./src/memory2.jpg"></div>
+						<div class="carousel-slide"><img src="./src/memory3.jpg"></div>
+                    </div>
+                    <button class="carousel-btn prev-btn" onclick="moveManual('memory-slides', -1)">&#10096;</button>
+                    <button class="carousel-btn next-btn" onclick="moveManual('memory-slides', 1)">&#10097;</button>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>Memory Upgrade HP 14S-AF118AU</h2>
+                <p>Since Windows 10 21H2 update, running 4GB of RAM in Windows isn't sufficient enough because Microsoft adds more feature that needs more memory. I upgrade this machine to 8GB by adding an SK Hynix 4GB SODIMM DDR3 memory. Sadly the motherboard of this particular laptop is maxed at 8GB but fortunately it's sufficient enough for Windows 10.</p>
+            </div>
+        </div>
+
+        <!-- Website -->
+        <h2 class="judul" id="website">Website & Content Writer</h2>
+        <div class="card project-card">
+            <div class="media-wrapper">
+                <div class="media-container">
+                    <img src="./src/mobilmotorlama.jpg" alt="Mobilmotorlama">
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>Mobilmotorlama</h2>
+                <p>Handled research, SEO writing, CSS themeing, and social media management for automotive digital content.</p>
+            </div>
+        </div>
+		
+		<div class="card project-card">
+            <div class="media-wrapper">
+                <div class="media-container">
+                    <img src="./src/simpen.jpg" alt="Simpen Purworejo">
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>SIMPEN Purworejo</h2>
+                <p>I converted about 1500 geographic data (name, latitude, longitude, description, etc.) into interactive map using Waymark plugin and Wordpress.</p>
+            </div>
+        </div>
+
+        <!-- Graphic Design with BIG Carousel -->
+        <h2 class="judul" id="grafis">Graphic Design</h2>
+        <div class="card">
+            <div class="card-content">
+                <p>The following is a selection of my professional and personal projects. I specialize in using powerful open-source tools, specifically Inkscape for vector graphics, GIMP for raster image manipulation, and Blender for 3D modeling, animation, and video editing.</p>
+                
+                <div class="big-carousel-wrapper">
+                    <div class="big-carousel-container">
+                        <div class="carousel-slides" id="grafis-slides">
+                            <div class="carousel-slide">
+                                <img src="./src/trifold.jpg" alt="Trifold flyer">
+                                <div class="carousel-caption">Tri-fold brochure mockups.</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./src/buku.jpg" alt="Book cover">
+                                <div class="carousel-caption">Book cover, layout and editting</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./src/poster.jpg" alt="Poster Design">
+                                <div class="carousel-caption">Poster making, layout and editting</div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="moveManual('grafis-slides', -1)">&#10094;</button>
+                        <button class="carousel-btn next-btn" onclick="moveManual('grafis-slides', 1)">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="judul" id="kontak">Contact</h2>
+        <div class="card">
+            <div class="card-content contact-content">
+                <h2>Get in Touch</h2>
+                <p>I am currently open to new opportunities and collaborations. Feel free to reach out via email or connect with me on social media.</p>
+             
+                <div class="contact-buttons">
+                    <a href="mailto:charisalfan95@gmail.com" class="btn-link btn-email">
+                        Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/charis-alfan-b00212130/" target="_blank" class="btn-link btn-social">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/charisalfan" target="_blank" class="btn-link btn-social">
+                        GitHub
+                    </a>
+                    <a href="https://instagram.com/charisalfan" target="_blank" class="btn-link btn-insta">
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>last edited : January 2026</p>
+    </footer>
+
+    <script>
+        const scrollStates = {};
+
+        function moveManual(id, direction) {
+            const container = document.getElementById(id);
+            const total = container.children.length;
+            if (!scrollStates[id]) scrollStates[id] = 0;
+            
+            scrollStates[id] = (scrollStates[id] + direction + total) % total;
+            container.style.transform = `translateX(-${scrollStates[id] * 100}%)`;
+        }
+
+        // Auto-scroll for the big carousel
+        setInterval(() => moveManual('grafis-slides', 1), 5000);
+    </script>
 </body>
 </html>
