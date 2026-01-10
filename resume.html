@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .paper {
+            background-color: white;
+            width: 210mm; 
+            min-height: 297mm;
+            padding: 25.4mm;
+            margin: 40px auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            outline: none;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 16px;
+            padding-left: 40px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        .floating-back {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 56px;
+            height: 56px;
+            background-color: #202124;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none; /* Ensure no link underline */
+        }
+
+        .floating-back:hover {
+            background-color: #3c4043;
+            transform: scale(1.05);
+        }
+
+        .floating-back:active {
+            transform: scale(0.95);
+        }
+
+        .floating-back svg {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+
+        @media print {
+            body { background: white; }
+            .paper { 
+                margin: 0; 
+                box-shadow: none; 
+                width: 100%; 
+                min-height: auto;
+            }
+            .floating-back { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper">
+        <h2>CHARIS ALFAN MAULANA</h2>
+        <p>Magelang, Jawa Tengah | +62 85643196625 | charisalfan95@gmail.com | <a href="https://github.com/charisalfan">github.com/charisalfan</a></p>
+        <h3>PROFESSIONAL SUMMARY</h3>
+        <p>Adaptable IT Support Specialist with 5+ years of experience in technical troubleshooting, network administration, and hardware maintenance. Proven track record of resolving complex Tier 1–2 technical issues</p>
+        <h3>CORE SKILLS</h3>
+        <ul>
+            <li><b>IT Tech Support</b> : Windows & Linux environment administration, End-to-end rollout, basic cybersecurity, hardware maintenance, and troubleshooting.</li>
+            <li><b>Multimedia</b> : Vector graphic design (Inkscape/Corel DRAW), Raster image manipulation (GIMP/Photoshop), Basic 3D modelling, animation and video editting (Blender). </li>
+            <li><b>Soft Skills</b> : Technical Writing (Documentation), Critical Thinking, User Training.</li>
+        </ul>
+        <h3>PROFESSIONAL EXPERIENCE</h3>
+        <p><b>IT/General Affair | Klinik Lingkungan dan Mitigasi Bencana UGM</b> <i>Sep 2018 - Now</i></p>
+		<ul>
+            <li>Provided Tier 1 and 2 support for hardware, software, and network connectivity issues via phone, email, and in-person.</li>
+            <li>Maintained a digital inventory of all company assets (IT equipment, book, digital product, furniture) using spreadsheet program.</li>
+            <li>Procured laptops, printers, and cameras by researching options and selecting models that met budgetary and specification requirements.</li>
+			<li>Coordinated financial administration for projects up to 300 million rupiah, utilizing Microsoft Excel to maintain audit-ready transparency with the accounting department.</li>
+			<li>Directed end-to-end technical logistics for multi-day conferences supporting 100+ attendees with 20+ networked workstations and integrated multi-channel AV systems, ensuring zero downtime during live sessions.</li>
+        </ul>
+        <h3>EDUCATION & CERTIFICATION</h3>
+		<ul>
+			<li><b>Bachelor of Informatics</b> AMIKOM University | Graduated January 2019.</li>
+            <li><b>IBM Skillsbuild</b> - Information Technology Fundamentals</li>
+		</ul>
+    </div>
+
+    <a href="https://charisalfan.github.io/charisalfan" class="floating-back" title="Go Back">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
